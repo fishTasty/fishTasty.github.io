@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好魚版攻擊力計算機 ver.1.0</title>
+    <style>
+        #container {
+            border: 1px solid #000;
+            padding: 20px;
+            width: 400px;
+            margin: auto auto;
+            border-radius: 10px;
+            background-color: #f2f5f2;
+        }
+
+        .section {
+            margin-bottom: 15px;
+        }
+
+        #title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        #comparison {
+            margin-top: 20px;
+        }
+
+        #comparison p {
+            margin: 5px 0;
+        }
+
+        #comparison .green {
+            color: green;
+        }
+
+        #comparison .red {
+            color: red;
+        }
+
+        #calculateBtn {
+            display: block;
+            margin: 20px auto;
+        }
+
+        #copyright {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+		
+		#customInput1{
+			height: 30px;
+		}
+
+		#customInput2{
+			height: 30px;
+		}
+		
+		input[type="number"]::-webkit-inner-spin-button,
+		input[type="number"]::-webkit-outer-spin-button {
+			height: 20px;
+			width: 20px;
+		}
+
+		input[type="number"] {
+			-moz-appearance: textfield; /* Firefox */
+		}
+
+    </style>
+	
+</head>
+<body>
+    <div id="container">
+        <div id="title">好魚版攻擊力計算機</div>
+
+		<div id="container">
+        <div id="explanation">
+            <p>須注意若有已持有的效果，請選"不選擇"</p>
+        </div>
+		</div>
+
+        <div class="section">
+            <p>最終能力值攻擊力：</p>
+            <input type="number" id="customInput1">
+        </div>
+
+        <div class="section">
+            <p>怪物追加攻擊力：</p>
+            <input type="number" id="customInput2">
+        </div>
+
+        <div class="section">
+            <p>職業&型態：</p>
+            <select id="contentDropdown1">
+				<option value="0">無</option>
+                <option value="40">戰士(繼承)</option>
+                <option value="30">遊俠(繼承)</option>
+                <option value="40">魔女(繼承)</option>
+				<option value="46">狂戰士(繼承)</option>
+				<option value="40">馴獸師(繼承)</option>
+				<option value="40">武士(繼承)</option>
+				<option value="40">梅花(繼承)</option>
+				<option value="66">女武神(繼承)</option>
+				<option value="50">女忍者(繼承)</option>
+				<option value="50">忍者(繼承)</option>
+				<option value="30">巫師(繼承)</option>
+				<option value="30">女巫(繼承)</option>
+				<option value="50">決鬥家(繼承)</option>
+				<option value="50">女鬥神(繼承)</option>
+				<option value="42">蘭(繼承)</option>
+				<option value="30">黑暗騎士(繼承)</option>
+				<option value="60">莎亦</option>
+				<option value="30">守護者(繼承)</option>
+				<option value="50">哈薩辛(繼承)</option>
+				<option value="30">諾娃(繼承)</option>
+				<option value="66">大賢者(繼承)</option>
+				<option value="50">珂賽爾(繼承)</option>
+				<option value="40">妲卡尼亞(繼承)</option>
+				<option value="50">羽士(繼承)</option>
+				<option value="50">魅狐(繼承)</option>
+				<option value="56">戰士(覺醒)</option>
+                <option value="40">遊俠(覺醒)</option>
+                <option value="60">魔女(覺醒)</option>
+				<option value="46">狂戰士(覺醒)</option>
+				<option value="40">馴獸師(覺醒)</option>
+				<option value="40">武士(覺醒)</option>
+				<option value="40">梅花(覺醒)</option>
+				<option value="50">女武神(覺醒)</option>
+				<option value="50">女忍者(覺醒)</option>
+				<option value="50">忍者(覺醒)</option>
+				<option value="42">巫師(覺醒)</option>
+				<option value="30">女巫(覺醒)</option>
+				<option value="40">決鬥家(覺醒)</option>
+				<option value="46">女鬥神(覺醒)</option>
+				<option value="46">蘭(覺醒)</option>
+				<option value="52">巡林</option>
+				<option value="30">黑暗騎士(覺醒)</option>
+				<option value="50">守護者(覺醒)</option>
+				<option value="50">哈薩辛(覺醒)</option>
+				<option value="50">諾娃(覺醒)</option>
+				<option value="50">大賢者(覺醒)</option>
+				<option value="50">珂賽爾(覺醒)</option>
+				<option value="55">妲卡尼亞(覺醒)</option>
+				<option value="50">羽士(覺醒)</option>
+				<option value="50">魅狐(覺醒)</option>
+				<option value="54">智者</option>
+            </select>
+        </div>
+		
+		<div class="section">
+		<p>是否啟用職業BUFF：</p>
+			<select id="firstDropdown" >
+			<option value="0">否</option>
+            <option value="1">是</option>
+			</select>
+		</div>
+		
+		<div class="section">
+		<p>選用的克羅恩套餐：</p>
+			<select id="food" >
+			<option value="0">不選擇</option>
+			<option value="30">簡單製作的克羅恩套餐</option>
+            <option value="8">風味獨特的克羅恩套餐</option>
+			</select>
+		</div>
+		
+		<div class="section">
+		<p>是否有教堂BUFF：</p>
+			<select id="cluch" >
+			<option value="0">不選擇</option>
+			<option value="0">否</option>
+            <option value="8">是</option>
+			</select>
+		</div>
+		
+		<div class="section">
+		<p>是否有別墅BUFF：</p>
+			<select id="villa" >
+			<option value="0">不選擇</option>
+			<option value="0">否</option>
+            <option value="10">是</option>
+			</select>
+		</div>
+		
+		<div class="section">
+		<p>是否啟用貝爾的心臟：</p>
+			<select id="vell" >
+			<option value="0">不選擇</option>
+			<option value="0">否</option>
+            <option value="8">是</option>
+			</select>
+		</div>
+		
+		<div class="section">
+		<p>選擇使用的靈藥BUFF：</p>
+			<select id="elixir" >
+			<option value="0">不選擇</option>
+			<option value="15">野獸的靈藥</option>
+            <option value="10">巨人的靈藥</option>
+			<option value="30">瘋狂的靈藥</option>
+			<option value="15">野蠻的靈藥</option>
+			<option value="35">蠶食瘋狂的靈藥</option>
+			<option value="0">新綠的靈藥</option>
+			<option value="13">無盡的狂亂秘藥</option>
+			<option value="8">無盡憤怒的秘藥</option>
+			</select>
+		</div>
+		
+		<div class="section">
+		<p>選擇使用的香水BUFF：</p>
+			<select id="perfume" >
+			<option value="0">不選擇</option>
+			<option value="20">勇氣的香水</option>
+            <option value="10">深海秘藥</option>
+			<option value="5">蘊含氣息的精靈的香水秘藥</option>
+			</select>
+		</div>
+		
+		<div class="section">
+		<p>是否持有+15攻擊力家具BUFF：</p>
+			<select id="furniture" >
+			<option value="0">不選擇</option>
+			<option value="0">否</option>
+            <option value="15">是</option>
+			</select>
+		</div>
+		
+		<div class="section">
+		<p>(僅組隊適用)隊伍內有莎亦?：</p>
+		<p>請注意如果自身為莎亦，則選"不選擇"</p>
+			<select id="team" >
+			<option value="0">不選擇</option>
+			<option value="0">否</option>
+            <option value="30">是</option>
+			</select>
+		</div>
+		
+        <button id="calculateBtn" onclick="calculateTotal()">確定</button>
+
+        <div id="result" class="section">
+            <p>計算結果：</p>
+			<p id="totalValue"></p>
+        </div>
+
+	<div id="container">
+        <div id="explanation">
+        <p>目前的版本還很粗糙，會慢慢優化</p>
+		<p>以下的設計會在後日補上</p>
+		<p>如網站有問題可以私訊我DC:star_thefish</p>
+		<p>龍女配莎亦的部分目前會有問題，需要多-25攻擊力</p>
+        </div>
+	</div>
+		
+        <div id="comparison" class="section">
+            <p>熱門獵場比較：</p>
+            <p id="comparisonText"></p>
+        </div>
+		</div>
+    <script>
+        function calculateTotal() {
+    var customInputValue1 = parseInt(document.getElementById("customInput1").value) || 0;
+    var customInputValue2 = parseInt(document.getElementById("customInput2").value) || 0;
+    var dropdownValue1 = parseInt(document.getElementById("contentDropdown1").value) || 0; 
+	var VellValue = parseInt(document.getElementById("vell").value) || 0;
+	var foodValue = parseInt(document.getElementById("food").value) || 0;
+	var cluchValue = parseInt(document.getElementById("cluch").value) || 0;
+	var villaValue = parseInt(document.getElementById("villa").value) || 0;
+	var elixirValue = parseInt(document.getElementById("elixir").value) || 0;
+	var perfumeValue = parseInt(document.getElementById("perfume").value) || 0;
+	var furnitureValue = parseInt(document.getElementById("furniture").value) || 0;
+	var teamValue = parseInt(document.getElementById("team").value) || 0;
+    
+	var select1 = document.getElementById("firstDropdown");
+	var selectElement = document.getElementById("contentDropdown1");
+	var selectEbuff = select1.selectedIndex;
+    var selectedIndex = selectElement.selectedIndex;
+	
+	//職業Ebuff搜尋，case順序對照職業&型態
+	if ( select1.value === "1" ){
+    switch (selectedIndex) {
+        case 0:
+            break;
+		case 5:
+		case 6:
+		case 30:
+		case 41:
+		case 46:
+			dropdownValue1 += 10; 
+            break;
+		case 7:
+		case 9:
+		case 10:
+		case 11:
+		case 12:
+		case 18:
+		case 23:
+		case 31:
+		case 34:
+		case 35:
+		case 36:
+		case 37:
+            dropdownValue1 += 20; 
+            break;
+        case 21:
+            dropdownValue1 += 14; // 大賢者繼承被選擇時的操作
+            break;
+		case 24:
+		case 25:
+		case 49:
+		case 50:
+			dropdownValue1 += 5;
+			break;
+		case 26:
+		case 39:
+			dropdownValue1 += 4; 
+            break;
+		case 40:
+			dropdownValue1 += 9; 
+            break;
+		case 17:
+		case 48:
+		case 51:
+			dropdownValue1 += 30;
+			break;
+        default:
+            break;
+    }}
+	
+	//var select2 = document.getElementById("team");
+	//var selectteam = select2.selectedIndex;
+	
+	//if ( select2.selectedIndex === "30" && select1.value === "0" ){
+	//switch(selectedIndex)
+		
+	
+
+    var total = customInputValue1 + customInputValue2 + dropdownValue1 + VellValue + foodValue + 
+	cluchValue + villaValue + perfumeValue + elixirValue + furnitureValue + teamValue;
+    document.getElementById("totalValue").textContent = total;
+	
+	var select2 = document.getElementById("team");
+	var selectteambuff = select2.selectedIndex;
+	
+
+	var comparisonText = "伊斯拉希德高原：1100";
+	var comparisonElement = document.getElementById("comparisonText");
+    if (total >= 1100) {
+        comparisonElement.classList.remove("red");
+        comparisonElement.classList.add("green");
+    } else {
+        comparisonElement.classList.remove("green");
+        comparisonElement.classList.add("red");
+    }
+
+    var adjustedTotal = total > 1100 ? (total - 1100) * 0.7 + 1100 : total;
+    comparisonText += "\n" + "真實攻擊力為：" + adjustedTotal.toFixed(0);
+    comparisonElement.textContent = comparisonText;
+	}
+    </script>
+
+    <div id="copyright">
+        最後更新日期：2024-03-30
+		<br>好魚版攻擊力計算機 &copy; 2024
+    </div>
+</body>
+</html>
