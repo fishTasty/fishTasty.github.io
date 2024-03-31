@@ -80,6 +80,10 @@
             font-weight: bold;
         }
 
+	    .red-text {
+    	    color: #FF0000; 
+	}
+
     </style>
 	
 </head>
@@ -90,7 +94,9 @@
 		<div id="container">
         <div id="explanation">
             <p>各位好，歡迎使用本計算機，以下是使用說明：
-			<p class="bold-text">1.確認自身已持有那些BUFF，面對若有已持有的效果，請選"不選擇"</p>
+			<p><span class="bold-text">1.確認自身目前<span class="red-text">已持有</span>哪些BUFF</span>，<span class="red-text">然後小心閱讀文字</span>
+			<br>本計算機為了<span class="red-text bold-text">幫大家省錢以及方便</span>，若是目前已持有的效果就請選擇"否"或是"不選擇"
+			</p>
 			<img src="buff.png" alt="buff image">
 			<br>2.開啟自身的裝備(I)後，點擊"我的能力值"
 			<br><img src="info.png" alt="info image">
@@ -117,14 +123,14 @@
         </div>
 
         <div class="section">
-            <p>職業&型態：</p>
-		<p>請注意此項的攻擊力數值已包含特化效果
+            <p>職業&型態?：</p>
+		<p class="bold-text">請注意此項的<span class="red-text">攻擊力數值已包含特化效果</span>
 		<br>因此在"前兩項"數值"請勿"算上特化攻擊力</p>
             <select id="contentDropdown1">
 				<option value="0">無</option>
-                <option value="40">戰士(繼承)</option>
-                <option value="30">遊俠(繼承)</option>
-                <option value="40">魔女(繼承)</option>
+                		<option value="40">戰士(繼承)</option>
+                		<option value="30">遊俠(繼承)</option>
+                		<option value="40">魔女(繼承)</option>
 				<option value="46">狂戰士(繼承)</option>
 				<option value="40">馴獸師(繼承)</option>
 				<option value="40">武士(繼承)</option>
@@ -148,8 +154,8 @@
 				<option value="50">羽士(繼承)</option>
 				<option value="50">魅狐(繼承)</option>
 				<option value="56">戰士(覺醒)</option>
-                <option value="40">遊俠(覺醒)</option>
-                <option value="60">魔女(覺醒)</option>
+                		<option value="40">遊俠(覺醒)</option>
+                		<option value="60">魔女(覺醒)</option>
 				<option value="46">狂戰士(覺醒)</option>
 				<option value="40">馴獸師(覺醒)</option>
 				<option value="40">武士(覺醒)</option>
@@ -177,89 +183,89 @@
         </div>
 		
 		<div class="section">
-		<p>是否啟用職業BUFF：</p>
+		<p>是否計算職業BUFF?：</p>
 			<select id="firstDropdown" >
 			<option value="0">否</option>
-            <option value="1">是</option>
+            		<option value="1">是</option>
 			</select>
 		</div>
 		
 		<div class="section">
-		<p>選用的克羅恩套餐：</p>
+		<p>選擇<span class="red-text">需要額外計算</span>的克羅恩套餐?：</p>
 			<select id="food" >
 			<option value="0">不選擇</option>
 			<option value="30">簡單製作的克羅恩套餐</option>
-            <option value="8">風味獨特的克羅恩套餐</option>
+            		<option value="8">風味獨特的克羅恩套餐</option>
 			</select>
 		</div>
 		
 		<div class="section">
-		<p>是否有教堂BUFF：</p>
+		<p>是否<span class="red-text">需要額外計算</span>教堂BUFF?：</p>
 			<select id="cluch" >
-			<option value="0">不選擇</option>
-            <option value="8">是</option>
+			<option value="0">否</option>
+            		<option value="8">是</option>
 			</select>
 		</div>
 		
 		<div class="section">
-		<p>是否有別墅BUFF：</p>
+		<p>是否<span class="red-text">需要額外計算</span>別墅BUFF?：</p>
 			<select id="villa" >
-			<option value="0">不選擇</option>
-            <option value="10">是</option>
+			<option value="0">否</option>
+            		<option value="10">是</option>
 			</select>
 		</div>
 		
 		<div class="section">
-		<p>是否啟用貝爾的心臟：</p>
+		<p>是否<span class="red-text">需要額外計算</span>貝爾的心臟效果?：</p>
 			<select id="vell" >
-			<option value="0">不選擇</option>
-            <option value="8">是</option>
+			<option value="0">否</option>
+            		<option value="8">是</option>
 			</select>
 		</div>
 		
 		<div class="section">
-		<p>選擇使用的靈藥BUFF：</p>
+		<p>選擇<span class="red-text">需要額外計算</span>的靈藥BUFF?：</p>
 			<select id="elixir" >
 			<option value="0">不選擇</option>
 			<option value="15">野獸的靈藥</option>
-            <option value="10">巨人的靈藥</option>
+            		<option value="10">巨人的靈藥</option>
 			<option value="30">瘋狂的靈藥</option>
 			<option value="15">野蠻的靈藥</option>
 			<option value="35">蠶食瘋狂的靈藥</option>
 			<option value="0">新綠的靈藥</option>
-			<option value="13">無盡的狂亂秘藥</option>
-			<option value="8">無盡憤怒的秘藥</option>
+			<option value="13">(隊伍)無盡的狂亂秘藥</option>
+			<option value="8">(隊伍)無盡憤怒的秘藥</option>
 			</select>
 		</div>
 		
 		<div class="section">
-		<p>選擇使用的香水BUFF：</p>
+		<p>選擇<span class="red-text">需要額外計算</span>的香水BUFF?：</p>
 			<select id="perfume" >
 			<option value="0">不選擇</option>
 			<option value="20">勇氣的香水</option>
-            <option value="10">深海秘藥</option>
+            		<option value="10">深海秘藥</option>
 			<option value="5">蘊含氣息的精靈的香水秘藥</option>
 			</select>
 		</div>
 		
 		<div class="section">
-		<p>持有+15攻擊力家具BUFF?：</p>
+		<p>是否<span class="red-text">需要額外計算</span>+15攻擊力家具BUFF?：</p>
 			<select id="furniture" >
-			<option value="0">不選擇</option>
-            <option value="15">是</option>
+			<option value="0">否</option>
+            		<option value="15">是</option>
 			</select>
 		</div>
 		
 		<div class="section">
-		<p>持有馬具BUFF?：</p>
+		<p>是否<span class="red-text">需要額外計算</span>馬具BUFF?：</p>
 			<select id="horse" >
-			<option value="0">不選擇</option>
-            <option value="5">是</option>
+			<option value="0">否</option>
+            		<option value="5">是</option>
 			</select>
 		</div>
 		
 		<div class="section">
-            <p>額外攻擊力：</p>
+            <p><span class="red-text">需要額外計算</span>的攻擊力?：</p>
 			<p>此欄位適用於未持有活動道具效果的額外補正用</p>
 			<p>如已持有狀態的情況下可以直接跳過</p>
             <input type="number" id="customInput3">
@@ -267,10 +273,10 @@
 
 		
 		<div class="section">
-		<p>(僅組隊適用)隊伍內有莎亦?：</p>
-		<p>請注意如果自身為莎亦，則選"不選擇"</p>
+		<p>(僅組隊適用)<span class="red-text">需要額外計算</span>隊伍內的莎亦BUFF?：</p>
+		<p>請注意如果自身為莎亦，則選"否"</p>
 			<select id="team" >
-			<option value="0">不選擇</option>
+			<option value="0">否</option>
            	 	<option value="30">是</option>
 			</select>
 		</div>
@@ -278,7 +284,7 @@
         <button id="calculateBtn" onclick="calculateTotal()">確定</button>
 
         <div id="result" class="section">
-            <p>計算結果：</p>
+            <p class="bold-text">>攻擊力計算結果：</p>
 			<p id="totalValue"></p>
         </div>
 
