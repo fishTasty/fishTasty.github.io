@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>好魚版攻擊力計算機 ver.1.0</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         #container {
             border: 1px solid #000;
             padding: 20px;
-            width: 400px;
+            width: 500px;
             margin: auto auto;
             border-radius: 10px;
             background-color: #f2f5f2;
@@ -84,7 +85,20 @@
 
 		<div id="container">
         <div id="explanation">
-            <p>須注意若有已持有的效果，請選"不選擇"</p>
+            <p>各位好，歡迎使用本計算機，以下是使用說明：
+			<br>1.確認自身已持有那些BUFF，面對若有已持有的效果，請選"不選擇"
+			<br><img src="buff.png" alt="buff image">
+			<br>2.開啟自身的裝備(I)後，點擊"我的能力值"
+			<br><img src="info.png" alt="info image">
+			<br>確認最終能力值那一排的數值為何
+			<br><img src="ap.png" alt="ap image">
+			<br>如果職業型態為"繼承"，請輸入第1個數字；
+			<br>反之，若型態為"覺醒"，請輸入第2個數字
+			<br>✦特殊職業：莎亦僅為"繼承"，巡林者&智者僅為"覺醒"✦
+			<br>3.確認畫面左下角的"對怪物追加攻擊力"項，數值為多少
+			<br><img src="monsap.png" alt="ap image">
+			<br>完全確認完之後就能開始使用此計算機囉d(`･∀･)b
+			</p>
         </div>
 		</div>
 
@@ -102,9 +116,9 @@
             <p>職業&型態：</p>
             <select id="contentDropdown1">
 				<option value="0">無</option>
-                		<option value="40">戰士(繼承)</option>
-                		<option value="30">遊俠(繼承)</option>
-                		<option value="40">魔女(繼承)</option>
+                <option value="40">戰士(繼承)</option>
+                <option value="30">遊俠(繼承)</option>
+                <option value="40">魔女(繼承)</option>
 				<option value="46">狂戰士(繼承)</option>
 				<option value="40">馴獸師(繼承)</option>
 				<option value="40">武士(繼承)</option>
@@ -128,8 +142,8 @@
 				<option value="50">羽士(繼承)</option>
 				<option value="50">魅狐(繼承)</option>
 				<option value="56">戰士(覺醒)</option>
-                		<option value="40">遊俠(覺醒)</option>
-                		<option value="60">魔女(覺醒)</option>
+                <option value="40">遊俠(覺醒)</option>
+                <option value="60">魔女(覺醒)</option>
 				<option value="46">狂戰士(覺醒)</option>
 				<option value="40">馴獸師(覺醒)</option>
 				<option value="40">武士(覺醒)</option>
@@ -177,7 +191,6 @@
 		<p>是否有教堂BUFF：</p>
 			<select id="cluch" >
 			<option value="0">不選擇</option>
-			<option value="0">否</option>
             <option value="8">是</option>
 			</select>
 		</div>
@@ -186,7 +199,6 @@
 		<p>是否有別墅BUFF：</p>
 			<select id="villa" >
 			<option value="0">不選擇</option>
-			<option value="0">否</option>
             <option value="10">是</option>
 			</select>
 		</div>
@@ -195,7 +207,6 @@
 		<p>是否啟用貝爾的心臟：</p>
 			<select id="vell" >
 			<option value="0">不選擇</option>
-			<option value="0">否</option>
             <option value="8">是</option>
 			</select>
 		</div>
@@ -226,13 +237,28 @@
 		</div>
 		
 		<div class="section">
-		<p>是否持有+15攻擊力家具BUFF：</p>
+		<p>持有+15攻擊力家具BUFF?：</p>
 			<select id="furniture" >
 			<option value="0">不選擇</option>
-			<option value="0">否</option>
             <option value="15">是</option>
 			</select>
 		</div>
+		
+		<div class="section">
+		<p>持有馬具BUFF?：</p>
+			<select id="horse" >
+			<option value="0">不選擇</option>
+            <option value="5">是</option>
+			</select>
+		</div>
+		
+		<div class="section">
+            <p>額外攻擊力：</p>
+			<p>此欄位適用於未持有活動道具效果的額外補正用</p>
+			<p>如已持有狀態的情況下可以直接跳過</p>
+            <input type="number" id="customInput3">
+        </div>
+
 		
 		<div class="section">
 		<p>(僅組隊適用)隊伍內有莎亦?：</p>
@@ -278,6 +304,8 @@
 	var perfumeValue = parseInt(document.getElementById("perfume").value) || 0;
 	var furnitureValue = parseInt(document.getElementById("furniture").value) || 0;
 	var teamValue = parseInt(document.getElementById("team").value) || 0;
+	var horseValue = parseInt(document.getElementById("horse").value) || 0;
+	var customInput3Value = parseInt(document.getElementById("customInput3").value) || 0;
     
 	var select1 = document.getElementById("firstDropdown");
 	var selectElement = document.getElementById("contentDropdown1");
@@ -344,7 +372,8 @@
 	
 
     var total = customInputValue1 + customInputValue2 + dropdownValue1 + VellValue + foodValue + 
-	cluchValue + villaValue + perfumeValue + elixirValue + furnitureValue + teamValue;
+	cluchValue + villaValue + perfumeValue + elixirValue + furnitureValue + teamValue + horseValue + 
+	customInput3Value;
     document.getElementById("totalValue").textContent = total;
 	
 	var select2 = document.getElementById("team");
