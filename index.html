@@ -76,6 +76,10 @@
 			-moz-appearance: textfield; /* Firefox */
 		}
 
+	    .bold-text {
+            font-weight: bold;
+        }
+
     </style>
 	
 </head>
@@ -86,8 +90,8 @@
 		<div id="container">
         <div id="explanation">
             <p>各位好，歡迎使用本計算機，以下是使用說明：
-			<br>1.確認自身已持有那些BUFF，面對若有已持有的效果，請選"不選擇"
-			<br><img src="buff.png" alt="buff image">
+			<p class="bold-text">1.確認自身已持有那些BUFF，面對若有已持有的效果，請選"不選擇"</p>
+			<img src="buff.png" alt="buff image">
 			<br>2.開啟自身的裝備(I)後，點擊"我的能力值"
 			<br><img src="info.png" alt="info image">
 			<br>確認最終能力值那一排的數值為何
@@ -267,8 +271,7 @@
 		<p>請注意如果自身為莎亦，則選"不選擇"</p>
 			<select id="team" >
 			<option value="0">不選擇</option>
-			<option value="0">否</option>
-            <option value="30">是</option>
+           	 	<option value="30">是</option>
 			</select>
 		</div>
 		
